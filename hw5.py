@@ -1,7 +1,7 @@
 def solveable(p_idxs, k_idx):
     """Returns True (false) if all pawn locations can be capture by sequential knight moves"""
 
-    if not p_idxs:  # base case - puzzle is solved
+    if not p_idxs:  # base case - puzzle is not solved
         return True
     moves = valid_moves(k_idx)  # Finds all valid moves
     for move in moves:
