@@ -13,18 +13,14 @@ class TestValidMoves(unittest.TestCase):
 class TestSolveable(unittest.TestCase):
 
     def testUnsolveable(self):
-        """Test a few unsolveable puzzles"""
         self.assertFalse(solveable({(1, 3), (2, 1), (2, 5), (4, 2), (5, 5)}, (3, 3)))
         self.assertFalse(solveable({(1, 3), (2, 1), (2, 5), (4, 2), (5, 5), (6, 3)}, (0, 0)))
 
     def testSolveableSimple(self):
-        """Test a simple solveable puzzle"""
         self.assertTrue(solveable({(1, 3), (2, 1), (4, 2)}, (2, 3)))
         self.assertTrue(solveable({(1, 4), (2, 2), (3, 5), (4, 1), (6, 2)}, (5, 4)))
 
     def testSolveableHard(self):
-        """Test a few more complex solveable puzzles - try to break your recursive algorithm to help you catch any
-        mistakes"""
         self.assertTrue(solveable(
             {(0, 6), (1, 3), (2, 0), (2, 1), (2, 5), (2, 7), (3, 5), (4, 1), (4, 2), (5, 4), (6, 2), (6, 6), (7, 4)},
             (2, 3)))
