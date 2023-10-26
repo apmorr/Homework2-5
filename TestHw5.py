@@ -1,17 +1,18 @@
+from hw5 import solveable, valid_moves
 import unittest
-from hw5 import Chessboard
+
 
 class TestChessboard(unittest.TestCase):
-    def test_solvable_board(self):
-        chessboard1 = Chessboard(8, (3, 3), {(1, 3), (2, 1), (2, 5), (4, 2), (5, 5), (6, 3)})
-        self.assertTrue(chessboard1.solveable(), "Test Case 1: Solvable board is not marked as solvable")
 
-    def test_unsolvable_board(self):
-        chessboard2 = Chessboard(8, (3, 3), {(2, 1), (2, 5), (4, 2), (5, 5), (6, 3)})
-        self.assertFalse(chessboard2.solveable(), "Test Case 2: Unsolvable board is marked as solvable")
+    def test_valid_moves(self):
+        self.assertCountEqual(valid_moves((0, 0)), {(1, 2), (2, 1)})
+        self.assertCountEqual(valid_moves((2, 2)), {(0, 1), (0, 3), (1, 0), (1, 4), (3, 0), (3, 4), (4, 1), (4, 3)})
+        self.assertCountEqual(valid_moves((7, 7)), {(5, 6), (6, 5)})
 
-    def test_no_pawns(self):
-        chessboard3 = Chessboard(8, (3, 3), set())
-        self.assertTrue(chessboard3.solveable(), "Test Case 3: No pawns on the board is marked as unsolvable")
+    def test_solveable(self):
+        self.assertTrue(solveable({(1, 5), (2, 1), (2, 5), (4, 2), (5, 5), (6, 3)}, (3, 3)))
+        self.assertFalse(solveable({(1, 3), (2, 1), (2, 5), (4, 2), (5, 5)}, (3, 3)))
+        self.assertFalse(solveable({(1, 3), (2, 1), (2, 5), (4, 2), (5, 5), (6, 3)}, (0, 0)))
+        self.assertTrue(solveable(set(), (3, 3)))
 
-
+    unittest.main()
