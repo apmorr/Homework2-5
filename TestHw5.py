@@ -14,6 +14,4 @@ class TestChessboard(unittest.TestCase):
         chessboard3 = Chessboard(8, (3, 3), set())
         self.assertTrue(chessboard3.solveable(), "Test Case 3: No pawns on the board is marked as unsolvable")
 
-if __name__ == '__main__':
-    unittest.main()
 
